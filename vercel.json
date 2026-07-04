@@ -1,19 +1,15 @@
 {
   "version": 2,
-  "builds": [
+  "buildCommand": "pnpm --filter client build",
+  "outputDirectory": "client/dist",
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "server/index.ts"
+      "source": "/api/:match*",
+      "destination": "https://e-bddk.com/api/:match*"
     },
     {
-      "src": "/(.*)",
-      "dest": "client/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
